@@ -2,9 +2,15 @@ const container = document.querySelector(".container");
 const section = document.querySelector(".section");
 const grayBtn = document.createElement("button");
 const resetBtn = document.createElement("button");
+const rainbowBtn = document.createElement("button");
+
+rainbowBtn.innerText = "Rainbow";
+grayBtn.innerText = "Gray";
 resetBtn.innerText = "Reset";
 
 section.appendChild(resetBtn);
+section.appendChild(grayBtn);
+section.appendChild(rainbowBtn);
 
 
 
@@ -21,7 +27,6 @@ function createGrid(cols, rows){
 }
 
 function reset(){
-    
     const boxes = document.querySelectorAll(".box");
     boxes.forEach(box => box.remove());
     const userInput = prompt("Enter the number of grids, maximum: 100", 100);
@@ -43,9 +48,20 @@ function grayColor(){
     }))  
 }
 
+function rainbowColor(){
+    const boxes = document.querySelectorAll(".box");
+    boxes.forEach(box => box.addEventListener("mouseover",() => {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        box.style.backgroundColor = `rgb(${r},${g},${b})`;
+    }))  
+}
 
 createGrid(16, 16);
 grayColor();
+rainbowBtn.addEventListener("click", rainbowColor);
+grayBtn.addEventListener("click", grayColor);
 resetBtn.addEventListener("click", reset);
 
 
