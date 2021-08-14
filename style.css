@@ -1,0 +1,11 @@
+.container {
+    display: grid;
+    width: 700px;
+    height: 700px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
